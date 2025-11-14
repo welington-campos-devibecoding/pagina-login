@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saudação - Microsserviço</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="welcome-box">
+            <div class="welcome-icon">👋</div>
+            <h1 id="welcomeMessage">Bem-vindo!</h1>
+            <p class="subtitle">Login realizado com sucesso</p>
+
+            <button class="btn-logout" id="btnLogout">
+                Sair
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Ler o parâmetro 'user' da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('user');
+
+        // Verificar se o usuário está autenticado
+        if (!username) {
+            // Se não houver parâmetro user, redirecionar para login
+            window.location.href = 'login.html';
+        } else {
+            // Exibir mensagem de boas-vindas com o nome do usuário
+            document.getElementById('welcomeMessage').textContent = `Bem-vindo, ${username}!`;
+        }
+
+        // Adicionar evento ao botão de logout
+        document.getElementById('btnLogout').addEventListener('click', () => {
+            // Redirecionar para a página de login
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
