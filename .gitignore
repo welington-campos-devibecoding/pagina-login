@@ -1,0 +1,306 @@
+# ============================================
+# .gitignore - Microsserviço de Login
+# ============================================
+# Arquivo de governança para controle de versão
+# Projeto: Frontend (HTML/CSS/JS) + Backend (Node.js/Express)
+# Última atualização: 2025-11-17
+# ============================================
+
+# ============================================
+# NODE.JS E NPM
+# ============================================
+
+# Dependências instaladas via npm/yarn
+# Razão: Arquivos gerados automaticamente, ocupam muito espaço
+# e podem ser recriados com 'npm install'
+node_modules/
+**/node_modules/
+
+# Logs do npm/yarn
+# Razão: Logs locais não devem ser versionados
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Arquivos de lock alternativos
+# Nota: package-lock.json DEVE ser versionado para garantir
+# instalações determinísticas. Apenas yarn.lock é ignorado
+# se o projeto usar exclusivamente npm
+yarn.lock
+pnpm-lock.yaml
+
+# Cache do npm
+.npm
+.eslintcache
+.node_repl_history
+
+# Diretórios de build/dist
+# Razão: Artefatos gerados que podem ser recriados
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+
+# ============================================
+# VARIÁVEIS DE AMBIENTE E SECRETS
+# ============================================
+
+# Arquivos de ambiente
+# Razão: CRÍTICO - Contêm credenciais, API keys, secrets
+# Nunca devem ser versionados por segurança
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# Arquivos de configuração sensível
+config/secrets.json
+config/credentials.json
+credentials.json
+secrets.json
+
+# ============================================
+# EDITORES E IDEs
+# ============================================
+
+# Visual Studio Code
+# Razão: Configurações pessoais do desenvolvedor
+# Exceção: workspace settings compartilhadas podem ser incluídas
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# JetBrains IDEs (WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*.swp
+*.swo
+*~
+.vim/
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+
+# ============================================
+# SISTEMAS OPERACIONAIS
+# ============================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.directory
+.Trash-*
+.nfs*
+
+# ============================================
+# ARQUIVOS TEMPORÁRIOS E CACHE
+# ============================================
+
+# Arquivos temporários gerais
+*.tmp
+*.temp
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage e testes
+coverage/
+*.lcov
+.nyc_output/
+.grunt/
+.lock-wscript
+
+# TypeScript
+*.tsbuildinfo
+.tscache/
+
+# Diversos caches
+.cache/
+.parcel-cache/
+.vite/
+.turbo/
+.webpack/
+
+# ============================================
+# FERRAMENTAS DE DESENVOLVIMENTO
+# ============================================
+
+# ESLint
+.eslintcache
+
+# Prettier (se houver config local gerada)
+.prettierignore
+
+# Jest
+.jest/
+
+# Storybook
+storybook-static/
+.storybook/public/
+
+# ============================================
+# ASSETS E UPLOADS
+# ============================================
+
+# Uploads de usuários (se houver funcionalidade futura)
+# Razão: Arquivos enviados por usuários não devem estar no repo
+uploads/
+public/uploads/
+frontend/uploads/
+
+# Assets temporários ou gerados
+# Nota: login-illustration.jpg deve ser mantido se for parte do design
+# frontend/assets/login-illustration.jpg - MANTIDO (asset de design)
+
+# ============================================
+# BANCO DE DADOS LOCAL
+# ============================================
+
+# SQLite
+*.sqlite
+*.sqlite3
+*.db
+
+# MongoDB local
+*.mongodb
+
+# Redis dumps
+dump.rdb
+
+# ============================================
+# DOCKER (se adicionar no futuro)
+# ============================================
+
+# Ignorar overrides locais
+docker-compose.override.yml
+
+# ============================================
+# DOCUMENTAÇÃO GERADA
+# ============================================
+
+# JSDoc / Documentação gerada automaticamente
+docs/api/
+docs/generated/
+
+# ============================================
+# CLAUDE CODE
+# ============================================
+
+# Configurações locais do Claude Code
+# Razão: Configurações pessoais do desenvolvedor
+.claude/settings.local.json
+.claude/.cache/
+
+# Nota: .claude/config.md DEVE ser versionado pois contém
+# especificações do projeto compartilhadas pela equipe
+
+# ============================================
+# DIVERSOS
+# ============================================
+
+# Arquivos de backup
+*.bak
+*.backup
+*.old
+
+# Arquivos compactados temporários
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Certificados SSL (se houver desenvolvimento local)
+*.pem
+*.key
+*.cert
+*.crt
+
+# ============================================
+# EXCEÇÕES (FORÇAR INCLUSÃO)
+# ============================================
+
+# Forçar inclusão de arquivos importantes mesmo que estejam
+# em diretórios ignorados
+!.gitkeep
+!.gitignore
+!.env.example
+
+# ============================================
+# NOTAS DE GOVERNANÇA
+# ============================================
+
+# ARQUIVOS QUE DEVEM SER VERSIONADOS:
+# ✓ package.json (dependências do projeto)
+# ✓ package-lock.json (versões exatas - npm)
+# ✓ README.md (documentação)
+# ✓ .claude/config.md (especificações do projeto)
+# ✓ Código fonte (*.js, *.html, *.css)
+# ✓ Assets de design (imagens, fontes)
+# ✓ Configurações de workspace compartilhadas
+
+# ARQUIVOS QUE NÃO DEVEM SER VERSIONADOS:
+# ✗ node_modules/ (muito grande, pode ser recriado)
+# ✗ .env (contém secrets)
+# ✗ Logs (*.log)
+# ✗ Arquivos temporários (*.tmp)
+# ✗ Configurações pessoais de IDE
+# ✗ Caches e builds gerados
+
+# MANUTENÇÃO:
+# - Revisar este arquivo periodicamente
+# - Adicionar novos padrões conforme o projeto evolui
+# - Documentar mudanças significativas
+# - Manter comentários atualizados
+
+# ============================================
+# FIM DO ARQUIVO
+# ============================================
