@@ -5,30 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Sistema</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body class="split-screen-body">
-    <!-- Botão de alternância de tema -->
+    <!-- Theme Toggle -->
     <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
         <i class='bx bx-moon theme-icon'></i>
     </button>
 
     <div class="split-container">
-        <!-- Área Esquerda - Visual/Ilustração com Imagem -->
+        <!-- Left Side - Visual -->
         <div class="split-left">
             <div class="illustration-container">
-                <!-- Imagem de fundo -->
                 <div class="illustration-image"></div>
-
-                <!-- Overlay com efeitos -->
                 <div class="illustration-overlay">
                     <div class="cyber-grid"></div>
                     <div class="neon-circle"></div>
                     <div class="neon-circle-2"></div>
                 </div>
-
-                <!-- Conteúdo sobre a imagem -->
                 <div class="welcome-text">
                     <h2 class="neon-title">BEM-VINDO</h2>
                     <p class="neon-subtitle">Sistema de Autenticação Segura</p>
@@ -41,35 +35,23 @@
             </div>
         </div>
 
-        <!-- Área Direita - Formulário de Login -->
+        <!-- Right Side - Form -->
         <div class="split-right">
-            <div class="login-card">
+            <div class="form-card">
                 <div class="card-header">
-                    <h1 class="login-title">LOGIN</h1>
+                    <h1 class="card-title">LOGIN</h1>
                     <div class="title-underline"></div>
                 </div>
 
                 <form id="loginForm" class="modern-form">
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="Digite seu email"
-                            required
-                        >
+                        <input type="email" id="email" name="email" placeholder="Digite seu email" required>
                     </div>
 
                     <div class="form-group">
                         <label for="password">Senha</label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            placeholder="Digite sua senha"
-                            required
-                        >
+                        <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
                     </div>
 
                     <div class="form-options">
@@ -83,7 +65,7 @@
 
                     <div id="errorMessage" class="error-message"></div>
 
-                    <button type="submit" class="btn-login glow-button" id="btnLogin">
+                    <button type="submit" class="btn-primary glow-button" id="btnLogin">
                         <span class="btn-text">Entrar</span>
                         <span class="btn-glow"></span>
                     </button>

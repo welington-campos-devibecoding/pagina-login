@@ -5,29 +5,30 @@ const API_URL = 'http://localhost:3001';
 // THEME MANAGEMENT
 // ========================================
 
-// Inicializar tema
+// Inicializar tema - Corporativo
 function initTheme() {
     const themeToggle = document.getElementById('themeToggle');
     if (!themeToggle) return;
 
     const themeIcon = themeToggle.querySelector('.theme-icon');
 
-    // Carregar tema salvo
+    // Carregar tema salvo ou usar 'light' como padrão
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
 
-    // Atualizar ícone Boxicons baseado no tema
+    // Atualizar ícone baseado no tema
     updateThemeIcon(themeIcon, savedTheme);
 
-    // Alternar tema
+    // Alternar tema ao clicar
     themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
+        // Aplicar novo tema
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
 
-        // Atualizar ícone Boxicons
+        // Atualizar ícone
         updateThemeIcon(themeIcon, newTheme);
     });
 }

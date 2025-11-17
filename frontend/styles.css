@@ -1,3 +1,8 @@
+/* ============================================
+   SISTEMA DE AUTENTICAÇÃO - DESIGN CORPORATIVO
+   Tema Profissional para Ambiente SaaS/Empresarial
+   ============================================ */
+
 /* Reset e configurações globais */
 * {
     margin: 0;
@@ -6,54 +11,73 @@
 }
 
 /* ========================================
-   VARIÁVEIS CSS - TEMA FUTURISTA
+   VARIÁVEIS CSS - TEMA CORPORATIVO PROFISSIONAL
    ======================================== */
 
 :root[data-theme="light"] {
-    /* Tema claro mantido para compatibilidade */
-    --bg-gradient-start: #667eea;
-    --bg-gradient-end: #764ba2;
-    --box-bg: #ffffff;
-    --text-primary: #333333;
-    --text-secondary: #666666;
-    --input-bg: #ffffff;
-    --input-border: #e0e0e0;
-    --input-focus: #667eea;
-    --link-color: #667eea;
-    --shadow: rgba(0, 0, 0, 0.2);
-    --info-box-bg: #f8f9fa;
-
-    /* Variáveis Split Screen */
-    --split-left-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --split-right-bg: #f5f5f5;
+    /* Paleta Corporativa Tema Claro */
+    --bg-primary: #f8f9fa;
+    --bg-secondary: #ffffff;
     --card-bg: #ffffff;
-    --neon-primary: #667eea;
-    --neon-secondary: #764ba2;
+    --text-primary: #1a202c;
+    --text-secondary: #718096;
+    --input-bg: #ffffff;
+    --input-border: #e2e8f0;
+    --input-focus: #3182ce;
+    --link-color: #3182ce;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --info-box-bg: #edf2f7;
+
+    /* Botão Primary - SEMPRE VISÍVEL */
+    --btn-primary-bg: #3182ce;
+    --btn-primary-hover: #2c5aa0;
+    --btn-primary-text: #ffffff;
+    --btn-shadow: rgba(49, 130, 206, 0.2);
+
+    /* Split Screen */
+    --split-left-bg: linear-gradient(135deg, #3182ce 0%, #2c5aa0 100%);
+    --split-right-bg: #f8f9fa;
+
+    /* Borders e Acentos */
+    --border-color: #e2e8f0;
+    --accent-color: #3182ce;
+
+    /* Theme Toggle */
+    --toggle-bg: #ffffff;
+    --toggle-border: #e2e8f0;
 }
 
 :root[data-theme="dark"] {
-    /* Tema escuro futurista com neon */
-    --bg-primary: #0a0a0f;
-    --bg-secondary: #13131a;
-    --card-bg: #1a1a24;
-    --text-primary: #e0e0e0;
-    --text-secondary: #a0a0a0;
-    --input-bg: #0f0f16;
-    --input-border: #2a2a3e;
-    --input-focus: #00ff88;
-    --link-color: #00ff88;
-    --shadow: rgba(0, 0, 0, 0.8);
-    --info-box-bg: #1a1a24;
+    /* Paleta Corporativa Tema Escuro */
+    --bg-primary: #1a202c;
+    --bg-secondary: #2d3748;
+    --card-bg: #2d3748;
+    --text-primary: #f7fafc;
+    --text-secondary: #a0aec0;
+    --input-bg: #1a202c;
+    --input-border: #4a5568;
+    --input-focus: #63b3ed;
+    --link-color: #63b3ed;
+    --shadow: rgba(0, 0, 0, 0.5);
+    --info-box-bg: #2d3748;
 
-    /* Cores Neon */
-    --neon-green: #00ff88;
-    --neon-purple: #a855f7;
-    --neon-cyan: #00d4ff;
-    --neon-pink: #ff00ff;
+    /* Botão Primary - SEMPRE VISÍVEL */
+    --btn-primary-bg: #3182ce;
+    --btn-primary-hover: #2c5aa0;
+    --btn-primary-text: #ffffff;
+    --btn-shadow: rgba(49, 130, 206, 0.3);
 
-    /* Variáveis Split Screen */
-    --split-left-bg: #0a0a0f;
-    --split-right-bg: #13131a;
+    /* Split Screen */
+    --split-left-bg: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    --split-right-bg: #1a202c;
+
+    /* Borders e Acentos */
+    --border-color: #4a5568;
+    --accent-color: #63b3ed;
+
+    /* Theme Toggle */
+    --toggle-bg: #2d3748;
+    --toggle-border: #4a5568;
 }
 
 /* ========================================
@@ -61,7 +85,7 @@
    ======================================== */
 
 .split-screen-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -95,7 +119,7 @@
 }
 
 /* ========================================
-   ILUSTRAÇÃO FUTURISTA (Lado Esquerdo)
+   ILUSTRAÇÃO LADO ESQUERDO (Limpa e Profissional)
    ======================================== */
 
 .illustration-container {
@@ -107,7 +131,7 @@
     justify-content: center;
 }
 
-/* Imagem de Fundo - SEMPRE VISÍVEL */
+/* Imagem de Fundo */
 .illustration-image {
     position: absolute;
     top: 0;
@@ -121,224 +145,132 @@
     z-index: 1;
 }
 
-/* Fallback quando não houver imagem */
-.split-left {
-    background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
-}
-
-/* Overlay OPCIONAL - Comentado por padrão para ver a imagem claramente */
+/* Overlay Sutil */
 .illustration-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* Overlay muito sutil para não cobrir a imagem */
     background: linear-gradient(
         135deg,
-        rgba(0, 0, 0, 0.2) 0%,
-        rgba(10, 10, 15, 0.3) 100%
+        rgba(49, 130, 206, 0.85) 0%,
+        rgba(44, 90, 160, 0.9) 100%
     );
     z-index: 2;
     pointer-events: none;
 }
 
-/* Grid Cibernético - MUITO SUTIL para não atrapalhar */
-.cyber-grid {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: gridMove 20s linear infinite;
-    pointer-events: none;
-}
-
-@keyframes gridMove {
-    0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
-    100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
-}
-
-/* Círculos Neon - MUITO SUTIS para não cobrir a imagem */
+/* Remover Grid e Círculos Neon */
+.cyber-grid,
 .neon-circle,
 .neon-circle-2 {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
-    opacity: 0.2;
-    animation: float 8s ease-in-out infinite;
-    pointer-events: none;
+    display: none;
 }
 
-.neon-circle {
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, var(--neon-green), transparent);
-    top: 10%;
-    left: 10%;
-}
-
-.neon-circle-2 {
-    width: 180px;
-    height: 180px;
-    background: radial-gradient(circle, var(--neon-purple), transparent);
-    bottom: 10%;
-    right: 10%;
-    animation-delay: 4s;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-20px) scale(1.05); }
-}
-
-/* Texto de Boas-vindas */
+/* Texto de Boas-vindas - Limpo */
 .welcome-text {
     position: relative;
     z-index: 10;
     text-align: center;
-    color: #fff;
+    color: #ffffff;
+    padding: 40px;
 }
 
 .neon-title {
-    font-size: 64px;
-    font-weight: 900;
-    letter-spacing: 8px;
+    font-size: 54px;
+    font-weight: 700;
     margin-bottom: 20px;
-    text-transform: uppercase;
-    background: linear-gradient(90deg, var(--neon-green), var(--neon-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: neonPulse 2s ease-in-out infinite;
-    text-shadow:
-        0 0 10px rgba(0, 255, 136, 0.5),
-        0 0 20px rgba(0, 255, 136, 0.3),
-        0 0 30px rgba(0, 255, 136, 0.2);
-}
-
-@keyframes neonPulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; }
+    letter-spacing: 2px;
+    color: #ffffff;
 }
 
 .neon-subtitle {
     font-size: 18px;
-    color: var(--neon-green);
-    letter-spacing: 2px;
-    margin-bottom: 40px;
-    text-transform: uppercase;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
 }
 
-/* Linhas Tecnológicas */
+/* Tech Lines - Minimalistas */
 .tech-lines {
     display: flex;
-    gap: 15px;
+    gap: 10px;
     justify-content: center;
-    margin-top: 30px;
+    align-items: center;
 }
 
 .tech-line {
-    width: 80px;
+    width: 40px;
     height: 3px;
-    background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
-    animation: techLineGlow 2s ease-in-out infinite;
-}
-
-.tech-line:nth-child(2) {
-    animation-delay: 0.5s;
-}
-
-.tech-line:nth-child(3) {
-    animation-delay: 1s;
-}
-
-@keyframes techLineGlow {
-    0%, 100% { opacity: 0.3; transform: scaleX(0.8); }
-    50% { opacity: 1; transform: scaleX(1); }
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
 }
 
 /* ========================================
-   CARD DE LOGIN (Lado Direito)
+   FORM CARD - Design Corporativo
    ======================================== */
 
+.form-card,
 .login-card {
     width: 100%;
-    max-width: 450px;
+    max-width: 420px;
     background: var(--card-bg);
-    border-radius: 20px;
-    padding: 50px 40px;
-    box-shadow:
-        0 10px 40px rgba(0, 0, 0, 0.3),
-        0 0 20px rgba(0, 255, 136, 0.1);
-    border: 1px solid rgba(0, 255, 136, 0.1);
-    animation: cardSlideIn 0.6s ease-out;
-}
-
-@keyframes cardSlideIn {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    border-radius: 12px;
+    padding: 48px 40px;
+    box-shadow: 0 4px 20px var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
 }
 
 .card-header {
-    margin-bottom: 40px;
+    margin-bottom: 32px;
 }
 
+/* Título - Profissional */
+.card-title,
 .login-title {
-    font-size: 36px;
-    font-weight: 900;
+    font-size: 28px;
+    font-weight: 700;
     color: var(--text-primary);
     text-align: center;
-    letter-spacing: 4px;
-    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
 }
 
 .title-underline {
-    width: 60px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--neon-green), var(--neon-purple));
+    width: 50px;
+    height: 3px;
+    background: var(--accent-color);
     margin: 0 auto;
     border-radius: 2px;
-    box-shadow: 0 0 10px var(--neon-green);
 }
 
 /* ========================================
-   FORMULÁRIO MODERNO
+   FORMULÁRIO - Inputs Limpos
    ======================================== */
 
 .modern-form .form-group {
-    margin-bottom: 25px;
+    margin-bottom: 24px;
 }
 
 .modern-form label {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     color: var(--text-primary);
     font-weight: 600;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 14px;
 }
 
 .modern-form input[type="email"],
 .modern-form input[type="password"],
 .modern-form input[type="text"] {
     width: 100%;
-    padding: 15px 20px;
-    border: 2px solid var(--input-border);
-    border-radius: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
     font-size: 15px;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     outline: none;
     background: var(--input-bg);
     color: var(--text-primary);
@@ -348,10 +280,14 @@
 .modern-form input[type="password"]:focus,
 .modern-form input[type="text"]:focus {
     border-color: var(--input-focus);
-    box-shadow:
-        0 0 0 3px rgba(0, 255, 136, 0.1),
-        0 0 15px rgba(0, 255, 136, 0.2);
-    transform: translateY(-2px);
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+}
+
+.input-hint {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
 }
 
 /* Form Options */
@@ -359,11 +295,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
-    font-size: 13px;
+    margin-bottom: 24px;
+    font-size: 14px;
 }
 
-/* Custom Checkbox */
+/* Custom Checkbox - Limpo */
 .checkbox-container {
     display: flex;
     align-items: center;
@@ -387,7 +323,7 @@
     border: 2px solid var(--input-border);
     border-radius: 4px;
     margin-right: 8px;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .checkbox-container:hover input ~ .checkmark {
@@ -395,9 +331,8 @@
 }
 
 .checkbox-container input:checked ~ .checkmark {
-    background-color: var(--input-focus);
-    border-color: var(--input-focus);
-    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
 }
 
 .checkmark:after {
@@ -425,189 +360,140 @@
 .link-primary {
     color: var(--link-color);
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     font-weight: 500;
 }
 
 .link-small:hover,
 .link-primary:hover {
     text-decoration: underline;
-    text-shadow: 0 0 8px var(--link-color);
 }
 
 .link-small {
-    font-size: 13px;
+    font-size: 14px;
 }
 
 /* ========================================
-   BOTÃO COM EFEITO GLOW
+   BOTÃO PRIMARY - SEMPRE VISÍVEL EM AMBOS OS TEMAS
    ======================================== */
 
-.glow-button {
+.glow-button,
+.btn-primary {
     position: relative;
     width: 100%;
-    padding: 16px;
-    background: linear-gradient(135deg, var(--neon-green), var(--neon-purple));
-    color: #fff;
+    padding: 14px 24px;
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
     border: none;
-    border-radius: 12px;
+    border-radius: 8px;
     font-size: 16px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-weight: 600;
     cursor: pointer;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow:
-        0 5px 15px rgba(0, 255, 136, 0.3),
-        0 0 20px rgba(0, 255, 136, 0.2);
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px var(--btn-shadow);
 }
 
-.glow-button .btn-text {
-    position: relative;
-    z-index: 2;
-}
-
-.glow-button .btn-glow {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.glow-button:hover {
-    transform: translateY(-3px);
-    box-shadow:
-        0 8px 25px rgba(0, 255, 136, 0.5),
-        0 0 30px rgba(0, 255, 136, 0.3);
-}
-
-.glow-button:hover .btn-glow {
-    opacity: 1;
-    animation: glowPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes glowPulse {
-    0%, 100% { transform: scale(1); opacity: 0.3; }
-    50% { transform: scale(1.2); opacity: 0.6; }
-}
-
-.glow-button:active {
+.glow-button:hover,
+.btn-primary:hover {
+    background: var(--btn-primary-hover);
     transform: translateY(-1px);
+    box-shadow: 0 6px 16px var(--btn-shadow);
 }
 
-.glow-button:disabled {
-    background: #555;
+.glow-button:active,
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.glow-button:disabled,
+.btn-primary:disabled {
+    background: #cbd5e0;
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
 }
 
+.btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+/* Remover efeitos glow extravagantes */
+.btn-glow {
+    display: none;
+}
+
 /* Error Message */
 .error-message {
-    background-color: rgba(255, 51, 51, 0.15);
-    color: #ff6b6b;
-    padding: 12px;
+    background-color: rgba(245, 101, 101, 0.1);
+    color: #f56565;
+    padding: 12px 16px;
     border-radius: 8px;
     margin-bottom: 20px;
     font-size: 14px;
     display: none;
-    border-left: 4px solid #ff6b6b;
+    border-left: 4px solid #f56565;
 }
 
 .error-message.show {
     display: block;
-    animation: shake 0.4s ease;
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
 }
 
 /* Success Message */
 .success-message {
-    background-color: rgba(0, 255, 136, 0.15);
-    color: var(--neon-green);
-    padding: 12px;
+    background-color: rgba(72, 187, 120, 0.1);
+    color: #48bb78;
+    padding: 12px 16px;
     border-radius: 8px;
     margin-bottom: 20px;
     font-size: 14px;
     display: none;
-    border-left: 4px solid var(--neon-green);
+    border-left: 4px solid #48bb78;
 }
 
 .success-message.show {
     display: block;
-    animation: slideIn 0.3s ease;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 /* Form Footer */
 .form-footer {
-    margin-top: 30px;
+    margin-top: 24px;
     text-align: center;
     font-size: 14px;
     color: var(--text-secondary);
 }
 
 /* ========================================
-   THEME TOGGLE BUTTON (Com Boxicons)
+   THEME TOGGLE BUTTON - Minimalista
    ======================================== */
 
 .theme-toggle {
     position: fixed;
-    top: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-    border: 2px solid var(--input-border);
-    background: var(--card-bg);
-    box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.2),
-        0 0 15px rgba(0, 255, 136, 0.05);
+    top: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    border: 1px solid var(--toggle-border);
+    background: var(--toggle-bg);
+    box-shadow: 0 2px 8px var(--shadow);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     z-index: 1000;
-    backdrop-filter: blur(10px);
 }
 
 .theme-toggle .theme-icon {
-    font-size: 24px;
+    font-size: 22px;
     color: var(--text-primary);
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .theme-toggle:hover {
     transform: translateY(-2px);
-    box-shadow:
-        0 6px 20px rgba(0, 0, 0, 0.3),
-        0 0 25px rgba(0, 255, 136, 0.15);
-    border-color: var(--link-color);
-}
-
-.theme-toggle:hover .theme-icon {
-    color: var(--link-color);
-    transform: rotate(15deg);
+    box-shadow: 0 4px 12px var(--shadow);
 }
 
 .theme-toggle:active {
@@ -615,49 +501,47 @@
 }
 
 /* ========================================
-   ESTILOS PARA OUTRAS PÁGINAS
+   ESTILOS PARA OUTRAS PÁGINAS (saudacao.html)
    ======================================== */
 
-/* Container padrão para páginas não-split */
 body:not(.split-screen-body) {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    background: linear-gradient(135deg, var(--split-left-bg));
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--text-primary);
-    transition: background 0.3s ease;
 }
 
 .container {
     width: 100%;
-    max-width: 450px;
+    max-width: 500px;
     padding: 20px;
 }
 
 .login-box,
 .welcome-box {
-    background: var(--box-bg);
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 10px 40px var(--shadow);
-    animation: slideIn 0.3s ease-out;
-    transition: background 0.3s ease;
+    background: var(--card-bg);
+    padding: 48px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px var(--shadow);
+    border: 1px solid var(--border-color);
 }
 
 .subtitle {
     text-align: center;
     color: var(--text-secondary);
     margin-bottom: 30px;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 h1 {
-    color: var(--link-color);
+    color: var(--text-primary);
     font-size: 32px;
     margin-bottom: 10px;
     text-align: center;
+    font-weight: 700;
 }
 
 /* Back Button */
@@ -669,7 +553,10 @@ h1 {
     color: var(--text-secondary);
     text-decoration: none;
     font-size: 14px;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .link-back:hover {
@@ -694,10 +581,10 @@ input[type="password"],
 input[type="text"] {
     width: 100%;
     padding: 12px 16px;
-    border: 2px solid var(--input-border);
+    border: 1px solid var(--input-border);
     border-radius: 8px;
     font-size: 15px;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     outline: none;
     background: var(--input-bg);
     color: var(--text-primary);
@@ -707,36 +594,31 @@ input[type="email"]:focus,
 input[type="password"]:focus,
 input[type="text"]:focus {
     border-color: var(--input-focus);
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-}
-
-.input-hint {
-    display: block;
-    margin-top: 5px;
-    font-size: 12px;
-    color: var(--text-secondary);
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
 }
 
 /* Buttons (páginas antigas) */
 .btn-login,
 .btn-logout {
     width: 100%;
-    padding: 14px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    padding: 14px 24px;
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
     border: none;
     border-radius: 8px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     margin-top: 10px;
+    box-shadow: 0 4px 12px var(--btn-shadow);
 }
 
 .btn-login:hover,
 .btn-logout:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    background: var(--btn-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px var(--btn-shadow);
 }
 
 .btn-login:active,
@@ -745,23 +627,32 @@ input[type="text"]:focus {
 }
 
 .btn-login:disabled {
-    background: #ccc;
+    background: #cbd5e0;
     cursor: not-allowed;
     transform: none;
 }
 
 /* Info Box */
 .info-box {
-    margin-top: 25px;
-    padding: 20px;
+    margin-top: 24px;
+    padding: 16px;
     background: var(--info-box-bg);
     border-radius: 8px;
-    font-size: 13px;
+    font-size: 14px;
     color: var(--text-secondary);
+    border: 1px solid var(--border-color);
 }
 
 .info-box p {
     margin: 8px 0;
+    display: flex;
+    align-items: start;
+    gap: 8px;
+}
+
+.info-box i {
+    color: var(--accent-color);
+    margin-top: 2px;
 }
 
 /* Welcome Box */
@@ -770,15 +661,8 @@ input[type="text"]:focus {
 }
 
 .welcome-icon {
-    font-size: 80px;
+    font-size: 64px;
     margin-bottom: 20px;
-    animation: wave 1s ease infinite;
-}
-
-@keyframes wave {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(20deg); }
-    75% { transform: rotate(-20deg); }
 }
 
 /* ========================================
@@ -795,7 +679,7 @@ input[type="text"]:focus {
     }
 
     .neon-title {
-        font-size: 48px;
+        font-size: 42px;
     }
 }
 
@@ -806,67 +690,63 @@ input[type="text"]:focus {
 
     .split-left {
         flex: 0 0 100%;
-        min-height: 40vh;
+        min-height: 35vh;
     }
 
     .split-right {
         flex: 0 0 100%;
-        padding: 30px 20px;
+        padding: 32px 20px;
     }
 
     .neon-title {
         font-size: 36px;
-        letter-spacing: 4px;
+        letter-spacing: 1px;
     }
 
     .neon-subtitle {
-        font-size: 14px;
+        font-size: 16px;
     }
 
-    .login-card {
-        padding: 40px 30px;
+    .login-card,
+    .form-card {
+        padding: 40px 28px;
     }
 
     .theme-toggle {
-        top: 15px;
-        right: 15px;
-        width: 45px;
-        height: 45px;
-        font-size: 20px;
+        top: 16px;
+        right: 16px;
+        width: 44px;
+        height: 44px;
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 10px;
+        padding: 16px;
     }
 
     .login-box,
     .welcome-box {
-        padding: 30px 20px;
+        padding: 32px 24px;
     }
 
     h1 {
-        font-size: 26px;
+        font-size: 28px;
     }
 
     .form-options {
         flex-direction: column;
         align-items: flex-start;
-        gap: 10px;
+        gap: 12px;
     }
 
-    .login-card {
-        padding: 30px 20px;
+    .login-card,
+    .form-card {
+        padding: 32px 24px;
     }
 
-    .login-title {
-        font-size: 28px;
-    }
-
-    .neon-circle,
-    .neon-circle-2 {
-        width: 200px;
-        height: 200px;
+    .login-title,
+    .card-title {
+        font-size: 24px;
     }
 }

@@ -3,148 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar Senha - Teste</title>
+    <title>Recuperar Senha - Sistema</title>
     <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<body>
-    <!-- Botão de alternância de tema -->
+<body class="split-screen-body">
+    <!-- Theme Toggle -->
     <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
-        <span class="theme-icon">🌙</span>
+        <i class='bx bx-moon theme-icon'></i>
     </button>
 
-    <div class="container">
-        <div class="login-box">
-            <div class="back-button">
-                <a href="login.html" class="link-back">← Voltar ao login</a>
+    <div class="split-container">
+        <!-- Left Side - Visual -->
+        <div class="split-left">
+            <div class="illustration-container">
+                <div class="illustration-image"></div>
+                <div class="illustration-overlay">
+                    <div class="cyber-grid"></div>
+                    <div class="neon-circle"></div>
+                    <div class="neon-circle-2"></div>
+                </div>
+                <div class="welcome-text">
+                    <h2 class="neon-title">RECUPERAÇÃO</h2>
+                    <p class="neon-subtitle">Redefina sua senha com segurança</p>
+                    <div class="tech-lines">
+                        <div class="tech-line"></div>
+                        <div class="tech-line"></div>
+                        <div class="tech-line"></div>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <h1>Recuperar Senha</h1>
-            <p class="subtitle">Digite seu email para receber instruções de recuperação</p>
-
-            <form id="recuperarForm">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Digite seu email cadastrado"
-                        required
-                    >
+        <!-- Right Side - Form -->
+        <div class="split-right">
+            <div class="form-card">
+                <div class="back-button">
+                    <a href="login.html" class="link-back">
+                        <i class='bx bx-arrow-back'></i> Voltar ao login
+                    </a>
                 </div>
 
-                <div id="errorMessage" class="error-message"></div>
-                <div id="successMessage" class="success-message"></div>
+                <div class="card-header">
+                    <h1 class="card-title">RECUPERAR SENHA</h1>
+                    <div class="title-underline"></div>
+                </div>
 
-                <button type="submit" class="btn-login" id="btnRecuperar">
-                    Enviar Link de Recuperação
-                </button>
-            </form>
+                <form id="recuperarForm" class="modern-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Digite seu email cadastrado" required>
+                    </div>
 
-            <div class="info-box">
-                <p>📧 Você receberá um email com instruções para redefinir sua senha.</p>
-                <p>Não recebeu o email? Verifique sua caixa de spam.</p>
+                    <div id="errorMessage" class="error-message"></div>
+                    <div id="successMessage" class="success-message"></div>
+
+                    <button type="submit" class="btn-primary glow-button" id="btnRecuperar">
+                        <span class="btn-text">Enviar Link de Recuperação</span>
+                        <span class="btn-glow"></span>
+                    </button>
+                </form>
+
+                <div class="info-box">
+                    <p><i class='bx bx-envelope'></i> Você receberá um email com instruções para redefinir sua senha.</p>
+                    <p><i class='bx bx-info-circle'></i> Não recebeu o email? Verifique sua caixa de spam.</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <script>
-        // Importar funções de tema
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('.theme-icon');
-
-        // Carregar tema salvo
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-
-        // Alternar tema
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-        });
-
-        // Formulário de recuperação
-        const recuperarForm = document.getElementById('recuperarForm');
-        const errorMessage = document.getElementById('errorMessage');
-        const successMessage = document.getElementById('successMessage');
-        const btnRecuperar = document.getElementById('btnRecuperar');
-
-        recuperarForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            hideError();
-            hideSuccess();
-
-            const email = document.getElementById('email').value.trim();
-
-            // Validações
-            if (!email) {
-                showError('Por favor, digite seu email');
-                return;
-            }
-
-            if (!isValidEmail(email)) {
-                showError('Por favor, insira um email válido');
-                return;
-            }
-
-            // Desabilitar botão
-            btnRecuperar.disabled = true;
-            btnRecuperar.textContent = 'Enviando...';
-
-            try {
-                // Simular envio de email (aqui você faria a requisição para o back-end)
-                await new Promise(resolve => setTimeout(resolve, 2000));
-
-                // Simular sucesso
-                showSuccess(`Email de recuperação enviado para ${email}. Verifique sua caixa de entrada.`);
-
-                // Limpar formulário
-                document.getElementById('email').value = '';
-
-            } catch (error) {
-                showError('Erro ao enviar email. Tente novamente.');
-            } finally {
-                btnRecuperar.disabled = false;
-                btnRecuperar.textContent = 'Enviar Link de Recuperação';
-            }
-        });
-
-        function showError(message) {
-            errorMessage.textContent = message;
-            errorMessage.classList.add('show');
-        }
-
-        function hideError() {
-            errorMessage.textContent = '';
-            errorMessage.classList.remove('show');
-        }
-
-        function showSuccess(message) {
-            successMessage.textContent = message;
-            successMessage.classList.add('show');
-        }
-
-        function hideSuccess() {
-            successMessage.textContent = '';
-            successMessage.classList.remove('show');
-        }
-
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-
-        // Limpar mensagens ao digitar
-        document.getElementById('email').addEventListener('input', () => {
-            hideError();
-            hideSuccess();
-        });
-    </script>
+    <script src="script.js"></script>
+    <script src="recuperar-logic.js"></script>
 </body>
 </html>
