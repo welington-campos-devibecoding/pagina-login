@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Botão de alternância de tema -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+        <span class="theme-icon">🌙</span>
+    </button>
+
     <div class="container">
         <div class="welcome-box">
             <div class="welcome-icon">👋</div>
@@ -19,6 +24,7 @@
         </div>
     </div>
 
+    <script src="script.js"></script>
     <script>
         // Ler o parâmetro 'user' da URL
         const urlParams = new URLSearchParams(window.location.search);

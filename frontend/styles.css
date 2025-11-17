@@ -5,14 +5,44 @@
     box-sizing: border-box;
 }
 
+/* Variáveis CSS para temas */
+:root[data-theme="light"] {
+    --bg-gradient-start: #667eea;
+    --bg-gradient-end: #764ba2;
+    --box-bg: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --input-bg: #ffffff;
+    --input-border: #e0e0e0;
+    --input-focus: #667eea;
+    --link-color: #667eea;
+    --shadow: rgba(0, 0, 0, 0.2);
+    --info-box-bg: #f8f9fa;
+}
+
+:root[data-theme="dark"] {
+    --bg-gradient-start: #1a1a2e;
+    --bg-gradient-end: #16213e;
+    --box-bg: #0f3460;
+    --text-primary: #eaeaea;
+    --text-secondary: #b8b8b8;
+    --input-bg: #1a1a2e;
+    --input-border: #2d4059;
+    --input-focus: #667eea;
+    --link-color: #7289da;
+    --shadow: rgba(0, 0, 0, 0.5);
+    --info-box-bg: #1a1a2e;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #333;
+    color: var(--text-primary);
+    transition: background 0.3s ease;
 }
 
 .container {
@@ -21,14 +51,43 @@ body {
     padding: 20px;
 }
 
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: var(--box-bg);
+    box-shadow: 0 4px 15px var(--shadow);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1) rotate(15deg);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
 /* Login Box */
 .login-box,
 .welcome-box {
-    background: white;
+    background: var(--box-bg);
     padding: 40px;
     border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 40px var(--shadow);
     animation: slideIn 0.3s ease-out;
+    transition: background 0.3s ease;
 }
 
 @keyframes slideIn {
@@ -43,7 +102,7 @@ body {
 }
 
 h1 {
-    color: #667eea;
+    color: var(--link-color);
     font-size: 32px;
     margin-bottom: 10px;
     text-align: center;
@@ -51,9 +110,25 @@ h1 {
 
 .subtitle {
     text-align: center;
-    color: #666;
+    color: var(--text-secondary);
     margin-bottom: 30px;
     font-size: 14px;
+}
+
+/* Back Button */
+.back-button {
+    margin-bottom: 20px;
+}
+
+.link-back {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.link-back:hover {
+    color: var(--link-color);
 }
 
 /* Form Styles */
@@ -64,26 +139,119 @@ h1 {
 label {
     display: block;
     margin-bottom: 8px;
-    color: #333;
+    color: var(--text-primary);
     font-weight: 600;
     font-size: 14px;
 }
 
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="text"] {
     width: 100%;
     padding: 12px 16px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid var(--input-border);
     border-radius: 8px;
     font-size: 15px;
     transition: all 0.3s ease;
     outline: none;
+    background: var(--input-bg);
+    color: var(--text-primary);
 }
 
 input[type="email"]:focus,
-input[type="password"]:focus {
-    border-color: #667eea;
+input[type="password"]:focus,
+input[type="text"]:focus {
+    border-color: var(--input-focus);
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.input-hint {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+/* Form Options (Remember Me + Forgot Password) */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* Custom Checkbox */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    color: var(--text-primary);
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-color: var(--input-bg);
+    border: 2px solid var(--input-border);
+    border-radius: 4px;
+    margin-right: 8px;
+    transition: all 0.3s ease;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    border-color: var(--input-focus);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: var(--input-focus);
+    border-color: var(--input-focus);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Links */
+.link-small,
+.link-primary {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.link-small:hover,
+.link-primary:hover {
+    text-decoration: underline;
+}
+
+.link-small {
+    font-size: 14px;
 }
 
 /* Error Message */
@@ -101,6 +269,23 @@ input[type="password"]:focus {
 .error-message.show {
     display: block;
     animation: shake 0.4s ease;
+}
+
+/* Success Message */
+.success-message {
+    background-color: #efe;
+    color: #2a7;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    display: none;
+    border-left: 4px solid #2a7;
+}
+
+.success-message.show {
+    display: block;
+    animation: slideIn 0.3s ease;
 }
 
 @keyframes shake {
@@ -142,23 +327,26 @@ input[type="password"]:focus {
     transform: none;
 }
 
-/* Credentials Hint */
-.credentials-hint {
-    margin-top: 30px;
-    padding: 20px;
-    background: #f8f9fa;
-    border-radius: 8px;
+/* Form Footer */
+.form-footer {
+    margin-top: 20px;
     text-align: center;
+    font-size: 14px;
+    color: var(--text-secondary);
 }
 
-.credentials-hint p {
+/* Info Box */
+.info-box {
+    margin-top: 25px;
+    padding: 20px;
+    background: var(--info-box-bg);
+    border-radius: 8px;
     font-size: 13px;
-    color: #666;
-    margin: 5px 0;
+    color: var(--text-secondary);
 }
 
-.credentials-hint strong {
-    color: #333;
+.info-box p {
+    margin: 8px 0;
 }
 
 /* Welcome Box */
@@ -191,5 +379,19 @@ input[type="password"]:focus {
 
     h1 {
         font-size: 26px;
+    }
+
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
     }
 }
