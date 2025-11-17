@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/frontend/login.html"
+    },
+    {
+      "source": "/cadastro",
+      "destination": "/frontend/cadastro.html"
+    },
+    {
+      "source": "/recuperar-senha",
+      "destination": "/frontend/recuperar-senha.html"
+    },
+    {
+      "source": "/saudacao",
+      "destination": "/frontend/saudacao.html"
+    }
+  ]
+}
