@@ -1,23 +1,13 @@
-/* ============================================
-   SISTEMA DE AUTENTICAÇÃO - DESIGN CORPORATIVO
-   Tema Profissional para Ambiente SaaS/Empresarial
-   ============================================ */
+/* Design Corporativo Otimizado - Vercel Ready */
 
-/* Reset e configurações globais */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ========================================
-   VARIÁVEIS CSS - TEMA CORPORATIVO PROFISSIONAL
-   ======================================== */
-
 :root[data-theme="light"] {
-    /* Paleta Corporativa Tema Claro */
     --bg-primary: #f8f9fa;
-    --bg-secondary: #ffffff;
     --card-bg: #ffffff;
     --text-primary: #1a202c;
     --text-secondary: #718096;
@@ -27,30 +17,19 @@
     --link-color: #3182ce;
     --shadow: rgba(0, 0, 0, 0.1);
     --info-box-bg: #edf2f7;
-
-    /* Botão Primary - SEMPRE VISÍVEL */
     --btn-primary-bg: #3182ce;
     --btn-primary-hover: #2c5aa0;
     --btn-primary-text: #ffffff;
     --btn-shadow: rgba(49, 130, 206, 0.2);
-
-    /* Split Screen */
     --split-left-bg: linear-gradient(135deg, #3182ce 0%, #2c5aa0 100%);
     --split-right-bg: #f8f9fa;
-
-    /* Borders e Acentos */
-    --border-color: #e2e8f0;
     --accent-color: #3182ce;
-
-    /* Theme Toggle */
     --toggle-bg: #ffffff;
     --toggle-border: #e2e8f0;
 }
 
 :root[data-theme="dark"] {
-    /* Paleta Corporativa Tema Escuro */
     --bg-primary: #1a202c;
-    --bg-secondary: #2d3748;
     --card-bg: #2d3748;
     --text-primary: #f7fafc;
     --text-secondary: #a0aec0;
@@ -60,32 +39,19 @@
     --link-color: #63b3ed;
     --shadow: rgba(0, 0, 0, 0.5);
     --info-box-bg: #2d3748;
-
-    /* Botão Primary - SEMPRE VISÍVEL */
     --btn-primary-bg: #3182ce;
     --btn-primary-hover: #2c5aa0;
     --btn-primary-text: #ffffff;
     --btn-shadow: rgba(49, 130, 206, 0.3);
-
-    /* Split Screen */
     --split-left-bg: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
     --split-right-bg: #1a202c;
-
-    /* Borders e Acentos */
-    --border-color: #4a5568;
     --accent-color: #63b3ed;
-
-    /* Theme Toggle */
     --toggle-bg: #2d3748;
     --toggle-border: #4a5568;
 }
 
-/* ========================================
-   SPLIT SCREEN LAYOUT
-   ======================================== */
-
 .split-screen-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -94,21 +60,17 @@
 .split-container {
     display: flex;
     min-height: 100vh;
-    width: 100%;
 }
 
-/* Área Esquerda - 60% */
 .split-left {
     flex: 0 0 60%;
     background: var(--split-left-bg);
     position: relative;
-    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Área Direita - 40% */
 .split-right {
     flex: 0 0 40%;
     background: var(--split-right-bg);
@@ -117,10 +79,6 @@
     justify-content: center;
     padding: 40px;
 }
-
-/* ========================================
-   ILUSTRAÇÃO LADO ESQUERDO (Limpa e Profissional)
-   ======================================== */
 
 .illustration-container {
     position: relative;
@@ -131,49 +89,33 @@
     justify-content: center;
 }
 
-/* Imagem de Fundo */
 .illustration-image {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background-image: url('./assets/login-illustration.jpg');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     z-index: 1;
 }
 
-/* Overlay Sutil */
 .illustration-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        135deg,
-        rgba(49, 130, 206, 0.85) 0%,
-        rgba(44, 90, 160, 0.9) 100%
-    );
+    inset: 0;
+    background: linear-gradient(135deg, rgba(49, 130, 206, 0.85), rgba(44, 90, 160, 0.9));
     z-index: 2;
-    pointer-events: none;
 }
 
-/* Remover Grid e Círculos Neon */
 .cyber-grid,
 .neon-circle,
 .neon-circle-2 {
     display: none;
 }
 
-/* Texto de Boas-vindas - Limpo */
 .welcome-text {
     position: relative;
     z-index: 10;
     text-align: center;
-    color: #ffffff;
+    color: #fff;
     padding: 40px;
 }
 
@@ -182,22 +124,18 @@
     font-weight: 700;
     margin-bottom: 20px;
     letter-spacing: 2px;
-    color: #ffffff;
 }
 
 .neon-subtitle {
     font-size: 18px;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.9);
+    opacity: 0.9;
     margin-bottom: 30px;
 }
 
-/* Tech Lines - Minimalistas */
 .tech-lines {
     display: flex;
     gap: 10px;
     justify-content: center;
-    align-items: center;
 }
 
 .tech-line {
@@ -207,34 +145,25 @@
     border-radius: 2px;
 }
 
-/* ========================================
-   FORM CARD - Design Corporativo
-   ======================================== */
-
-.form-card,
-.login-card {
+.form-card {
     width: 100%;
     max-width: 420px;
     background: var(--card-bg);
     border-radius: 12px;
     padding: 48px 40px;
     box-shadow: 0 4px 20px var(--shadow);
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
+    border: 1px solid var(--input-border);
 }
 
 .card-header {
     margin-bottom: 32px;
 }
 
-/* Título - Profissional */
-.card-title,
-.login-title {
+.card-title {
     font-size: 28px;
     font-weight: 700;
     color: var(--text-primary);
     text-align: center;
-    letter-spacing: -0.5px;
     margin-bottom: 8px;
 }
 
@@ -245,10 +174,6 @@
     margin: 0 auto;
     border-radius: 2px;
 }
-
-/* ========================================
-   FORMULÁRIO - Inputs Limpos
-   ======================================== */
 
 .modern-form .form-group {
     margin-bottom: 24px;
@@ -262,23 +187,19 @@
     font-size: 14px;
 }
 
-.modern-form input[type="email"],
-.modern-form input[type="password"],
-.modern-form input[type="text"] {
+.modern-form input {
     width: 100%;
     padding: 12px 16px;
     border: 1px solid var(--input-border);
     border-radius: 8px;
     font-size: 15px;
-    transition: all 0.2s ease;
     outline: none;
     background: var(--input-bg);
     color: var(--text-primary);
+    transition: border-color 0.2s;
 }
 
-.modern-form input[type="email"]:focus,
-.modern-form input[type="password"]:focus,
-.modern-form input[type="text"]:focus {
+.modern-form input:focus {
     border-color: var(--input-focus);
     box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
 }
@@ -290,7 +211,6 @@
     color: var(--text-secondary);
 }
 
-/* Form Options */
 .form-options {
     display: flex;
     justify-content: space-between;
@@ -299,39 +219,35 @@
     font-size: 14px;
 }
 
-/* Custom Checkbox - Limpo */
 .checkbox-container {
     display: flex;
     align-items: center;
     cursor: pointer;
-    user-select: none;
     color: var(--text-secondary);
 }
 
 .checkbox-container input {
     position: absolute;
     opacity: 0;
-    cursor: pointer;
 }
 
 .checkmark {
-    position: relative;
-    display: inline-block;
     width: 18px;
     height: 18px;
-    background-color: var(--input-bg);
+    background: var(--input-bg);
     border: 2px solid var(--input-border);
     border-radius: 4px;
     margin-right: 8px;
-    transition: all 0.2s ease;
+    position: relative;
+    transition: all 0.2s;
 }
 
-.checkbox-container:hover input ~ .checkmark {
+.checkbox-container:hover .checkmark {
     border-color: var(--input-focus);
 }
 
 .checkbox-container input:checked ~ .checkmark {
-    background-color: var(--accent-color);
+    background: var(--accent-color);
     border-color: var(--accent-color);
 }
 
@@ -339,13 +255,6 @@
     content: "";
     position: absolute;
     display: none;
-}
-
-.checkbox-container input:checked ~ .checkmark:after {
-    display: block;
-}
-
-.checkbox-container .checkmark:after {
     left: 5px;
     top: 1px;
     width: 5px;
@@ -355,13 +264,16 @@
     transform: rotate(45deg);
 }
 
-/* Links */
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
 .link-small,
 .link-primary {
     color: var(--link-color);
     text-decoration: none;
-    transition: all 0.2s ease;
     font-weight: 500;
+    transition: opacity 0.2s;
 }
 
 .link-small:hover,
@@ -373,13 +285,9 @@
     font-size: 14px;
 }
 
-/* ========================================
-   BOTÃO PRIMARY - SEMPRE VISÍVEL EM AMBOS OS TEMAS
-   ======================================== */
-
 .glow-button,
-.btn-primary {
-    position: relative;
+.btn-primary,
+.btn-logout {
     width: 100%;
     padding: 14px 24px;
     background: var(--btn-primary-bg);
@@ -389,20 +297,16 @@
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
     box-shadow: 0 4px 12px var(--btn-shadow);
+    transition: all 0.2s;
 }
 
 .glow-button:hover,
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-logout:hover {
     background: var(--btn-primary-hover);
     transform: translateY(-1px);
     box-shadow: 0 6px 16px var(--btn-shadow);
-}
-
-.glow-button:active,
-.btn-primary:active {
-    transform: translateY(0);
 }
 
 .glow-button:disabled,
@@ -410,7 +314,6 @@
     background: #cbd5e0;
     cursor: not-allowed;
     transform: none;
-    box-shadow: none;
 }
 
 .btn-text {
@@ -418,54 +321,42 @@
     z-index: 2;
 }
 
-/* Remover efeitos glow extravagantes */
 .btn-glow {
     display: none;
 }
 
-/* Error Message */
-.error-message {
-    background-color: rgba(245, 101, 101, 0.1);
-    color: #f56565;
+.error-message,
+.success-message {
     padding: 12px 16px;
     border-radius: 8px;
     margin-bottom: 20px;
     font-size: 14px;
     display: none;
+}
+
+.error-message {
+    background: rgba(245, 101, 101, 0.1);
+    color: #f56565;
     border-left: 4px solid #f56565;
 }
 
-.error-message.show {
-    display: block;
-}
-
-/* Success Message */
 .success-message {
-    background-color: rgba(72, 187, 120, 0.1);
+    background: rgba(72, 187, 120, 0.1);
     color: #48bb78;
-    padding: 12px 16px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    font-size: 14px;
-    display: none;
     border-left: 4px solid #48bb78;
 }
 
+.error-message.show,
 .success-message.show {
     display: block;
 }
 
-/* Form Footer */
 .form-footer {
     margin-top: 24px;
     text-align: center;
     font-size: 14px;
     color: var(--text-secondary);
 }
-
-/* ========================================
-   THEME TOGGLE BUTTON - Minimalista
-   ======================================== */
 
 .theme-toggle {
     position: fixed;
@@ -481,37 +372,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
     z-index: 1000;
+    transition: transform 0.2s;
 }
 
 .theme-toggle .theme-icon {
     font-size: 22px;
     color: var(--text-primary);
-    transition: all 0.2s ease;
 }
 
 .theme-toggle:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--shadow);
 }
-
-.theme-toggle:active {
-    transform: translateY(0);
-}
-
-/* ========================================
-   ESTILOS PARA OUTRAS PÁGINAS (saudacao.html)
-   ======================================== */
 
 body:not(.split-screen-body) {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    background: linear-gradient(135deg, var(--split-left-bg));
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #3182ce, #2c5aa0);
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-primary);
 }
 
 .container {
@@ -520,31 +400,28 @@ body:not(.split-screen-body) {
     padding: 20px;
 }
 
-.login-box,
 .welcome-box {
     background: var(--card-bg);
     padding: 48px 40px;
     border-radius: 12px;
     box-shadow: 0 4px 20px var(--shadow);
-    border: 1px solid var(--border-color);
-}
-
-.subtitle {
+    border: 1px solid var(--input-border);
     text-align: center;
-    color: var(--text-secondary);
-    margin-bottom: 30px;
-    font-size: 16px;
 }
 
 h1 {
     color: var(--text-primary);
     font-size: 32px;
     margin-bottom: 10px;
-    text-align: center;
     font-weight: 700;
 }
 
-/* Back Button */
+.subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
 .back-button {
     margin-bottom: 20px;
 }
@@ -553,86 +430,16 @@ h1 {
     color: var(--text-secondary);
     text-decoration: none;
     font-size: 14px;
-    transition: color 0.2s ease;
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    transition: color 0.2s;
 }
 
 .link-back:hover {
     color: var(--link-color);
 }
 
-/* Form Styles (páginas antigas) */
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    color: var(--text-primary);
-    font-weight: 600;
-    font-size: 14px;
-}
-
-input[type="email"],
-input[type="password"],
-input[type="text"] {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1px solid var(--input-border);
-    border-radius: 8px;
-    font-size: 15px;
-    transition: all 0.2s ease;
-    outline: none;
-    background: var(--input-bg);
-    color: var(--text-primary);
-}
-
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="text"]:focus {
-    border-color: var(--input-focus);
-    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
-}
-
-/* Buttons (páginas antigas) */
-.btn-login,
-.btn-logout {
-    width: 100%;
-    padding: 14px 24px;
-    background: var(--btn-primary-bg);
-    color: var(--btn-primary-text);
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    margin-top: 10px;
-    box-shadow: 0 4px 12px var(--btn-shadow);
-}
-
-.btn-login:hover,
-.btn-logout:hover {
-    background: var(--btn-primary-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px var(--btn-shadow);
-}
-
-.btn-login:active,
-.btn-logout:active {
-    transform: translateY(0);
-}
-
-.btn-login:disabled {
-    background: #cbd5e0;
-    cursor: not-allowed;
-    transform: none;
-}
-
-/* Info Box */
 .info-box {
     margin-top: 24px;
     padding: 16px;
@@ -640,24 +447,17 @@ input[type="text"]:focus {
     border-radius: 8px;
     font-size: 14px;
     color: var(--text-secondary);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--input-border);
 }
 
 .info-box p {
     margin: 8px 0;
     display: flex;
-    align-items: start;
     gap: 8px;
 }
 
 .info-box i {
     color: var(--accent-color);
-    margin-top: 2px;
-}
-
-/* Welcome Box */
-.welcome-box {
-    text-align: center;
 }
 
 .welcome-icon {
@@ -665,15 +465,12 @@ input[type="text"]:focus {
     margin-bottom: 20px;
 }
 
-/* ========================================
-   RESPONSIVE DESIGN
-   ======================================== */
+.btn-logout {
+    margin-top: 10px;
+}
 
 @media (max-width: 1024px) {
-    .split-left {
-        flex: 0 0 50%;
-    }
-
+    .split-left,
     .split-right {
         flex: 0 0 50%;
     }
@@ -689,32 +486,26 @@ input[type="text"]:focus {
     }
 
     .split-left {
-        flex: 0 0 100%;
         min-height: 35vh;
     }
 
     .split-right {
-        flex: 0 0 100%;
         padding: 32px 20px;
     }
 
     .neon-title {
         font-size: 36px;
-        letter-spacing: 1px;
     }
 
     .neon-subtitle {
         font-size: 16px;
     }
 
-    .login-card,
     .form-card {
         padding: 40px 28px;
     }
 
     .theme-toggle {
-        top: 16px;
-        right: 16px;
         width: 44px;
         height: 44px;
     }
@@ -725,28 +516,19 @@ input[type="text"]:focus {
         padding: 16px;
     }
 
-    .login-box,
-    .welcome-box {
+    .welcome-box,
+    .form-card {
         padding: 32px 24px;
     }
 
-    h1 {
-        font-size: 28px;
+    h1,
+    .card-title {
+        font-size: 24px;
     }
 
     .form-options {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
-    }
-
-    .login-card,
-    .form-card {
-        padding: 32px 24px;
-    }
-
-    .login-title,
-    .card-title {
-        font-size: 24px;
     }
 }

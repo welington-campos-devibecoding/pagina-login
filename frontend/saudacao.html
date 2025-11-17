@@ -26,24 +26,18 @@
         </div>
     </div>
 
-    <script src="./script.js"></script>
-    <script>
-        // Ler o parâmetro 'user' da URL
+    <script type="module" src="./script.js"></script>
+    <script type="module">
         const urlParams = new URLSearchParams(window.location.search);
         const username = urlParams.get('user');
 
-        // Verificar se o usuário está autenticado
         if (!username) {
-            // Se não houver parâmetro user, redirecionar para login
             window.location.href = './login.html';
         } else {
-            // Exibir mensagem de boas-vindas com o nome do usuário
             document.getElementById('welcomeMessage').textContent = `Bem-vindo, ${username}!`;
         }
 
-        // Adicionar evento ao botão de logout
         document.getElementById('btnLogout').addEventListener('click', () => {
-            // Redirecionar para a página de login
             window.location.href = './login.html';
         });
     </script>
