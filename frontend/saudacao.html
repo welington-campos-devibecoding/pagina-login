@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saudação - Microsserviço</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css">
     <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
     <script>
         // Ler o parâmetro 'user' da URL
         const urlParams = new URLSearchParams(window.location.search);
@@ -35,7 +35,7 @@
         // Verificar se o usuário está autenticado
         if (!username) {
             // Se não houver parâmetro user, redirecionar para login
-            window.location.href = 'login.html';
+            window.location.href = './login.html';
         } else {
             // Exibir mensagem de boas-vindas com o nome do usuário
             document.getElementById('welcomeMessage').textContent = `Bem-vindo, ${username}!`;
@@ -44,7 +44,7 @@
         // Adicionar evento ao botão de logout
         document.getElementById('btnLogout').addEventListener('click', () => {
             // Redirecionar para a página de login
-            window.location.href = 'login.html';
+            window.location.href = './login.html';
         });
     </script>
 </body>
