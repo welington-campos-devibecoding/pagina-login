@@ -15,7 +15,9 @@ function initTheme() {
     // Carregar tema salvo
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
-    themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    // Atualizar ícone Boxicons baseado no tema
+    updateThemeIcon(themeIcon, savedTheme);
 
     // Alternar tema
     themeToggle.addEventListener('click', () => {
@@ -24,8 +26,25 @@ function initTheme() {
 
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
-        themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+
+        // Atualizar ícone Boxicons
+        updateThemeIcon(themeIcon, newTheme);
     });
+}
+
+// Atualizar ícone do tema (suporta emoji e Boxicons)
+function updateThemeIcon(iconElement, theme) {
+    if (!iconElement) return;
+
+    // Se for um elemento <i> (Boxicons)
+    if (iconElement.tagName === 'I') {
+        iconElement.className = theme === 'dark'
+            ? 'bx bx-sun theme-icon'  // Sol para tema escuro
+            : 'bx bx-moon theme-icon'; // Lua para tema claro
+    } else {
+        // Fallback para emoji
+        iconElement.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
 }
 
 // ========================================

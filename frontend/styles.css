@@ -5,8 +5,12 @@
     box-sizing: border-box;
 }
 
-/* Variáveis CSS para temas */
+/* ========================================
+   VARIÁVEIS CSS - TEMA FUTURISTA
+   ======================================== */
+
 :root[data-theme="light"] {
+    /* Tema claro mantido para compatibilidade */
     --bg-gradient-start: #667eea;
     --bg-gradient-end: #764ba2;
     --box-bg: #ffffff;
@@ -18,23 +22,604 @@
     --link-color: #667eea;
     --shadow: rgba(0, 0, 0, 0.2);
     --info-box-bg: #f8f9fa;
+
+    /* Variáveis Split Screen */
+    --split-left-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --split-right-bg: #f5f5f5;
+    --card-bg: #ffffff;
+    --neon-primary: #667eea;
+    --neon-secondary: #764ba2;
 }
 
 :root[data-theme="dark"] {
-    --bg-gradient-start: #1a1a2e;
-    --bg-gradient-end: #16213e;
-    --box-bg: #0f3460;
-    --text-primary: #eaeaea;
-    --text-secondary: #b8b8b8;
-    --input-bg: #1a1a2e;
-    --input-border: #2d4059;
-    --input-focus: #667eea;
-    --link-color: #7289da;
-    --shadow: rgba(0, 0, 0, 0.5);
-    --info-box-bg: #1a1a2e;
+    /* Tema escuro futurista com neon */
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #13131a;
+    --card-bg: #1a1a24;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --input-bg: #0f0f16;
+    --input-border: #2a2a3e;
+    --input-focus: #00ff88;
+    --link-color: #00ff88;
+    --shadow: rgba(0, 0, 0, 0.8);
+    --info-box-bg: #1a1a24;
+
+    /* Cores Neon */
+    --neon-green: #00ff88;
+    --neon-purple: #a855f7;
+    --neon-cyan: #00d4ff;
+    --neon-pink: #ff00ff;
+
+    /* Variáveis Split Screen */
+    --split-left-bg: #0a0a0f;
+    --split-right-bg: #13131a;
 }
 
-body {
+/* ========================================
+   SPLIT SCREEN LAYOUT
+   ======================================== */
+
+.split-screen-body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.split-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Área Esquerda - 60% */
+.split-left {
+    flex: 0 0 60%;
+    background: var(--split-left-bg);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Área Direita - 40% */
+.split-right {
+    flex: 0 0 40%;
+    background: var(--split-right-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+/* ========================================
+   ILUSTRAÇÃO FUTURISTA (Lado Esquerdo)
+   ======================================== */
+
+.illustration-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Imagem de Fundo - SEMPRE VISÍVEL */
+.illustration-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/login-illustration.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+/* Fallback quando não houver imagem */
+.split-left {
+    background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+}
+
+/* Overlay OPCIONAL - Comentado por padrão para ver a imagem claramente */
+.illustration-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Overlay muito sutil para não cobrir a imagem */
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(10, 10, 15, 0.3) 100%
+    );
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Grid Cibernético - MUITO SUTIL para não atrapalhar */
+.cyber-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes gridMove {
+    0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+    100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
+}
+
+/* Círculos Neon - MUITO SUTIS para não cobrir a imagem */
+.neon-circle,
+.neon-circle-2 {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.2;
+    animation: float 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.neon-circle {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, var(--neon-green), transparent);
+    top: 10%;
+    left: 10%;
+}
+
+.neon-circle-2 {
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle, var(--neon-purple), transparent);
+    bottom: 10%;
+    right: 10%;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
+}
+
+/* Texto de Boas-vindas */
+.welcome-text {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: #fff;
+}
+
+.neon-title {
+    font-size: 64px;
+    font-weight: 900;
+    letter-spacing: 8px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, var(--neon-green), var(--neon-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: neonPulse 2s ease-in-out infinite;
+    text-shadow:
+        0 0 10px rgba(0, 255, 136, 0.5),
+        0 0 20px rgba(0, 255, 136, 0.3),
+        0 0 30px rgba(0, 255, 136, 0.2);
+}
+
+@keyframes neonPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+.neon-subtitle {
+    font-size: 18px;
+    color: var(--neon-green);
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+/* Linhas Tecnológicas */
+.tech-lines {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.tech-line {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+    animation: techLineGlow 2s ease-in-out infinite;
+}
+
+.tech-line:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.tech-line:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes techLineGlow {
+    0%, 100% { opacity: 0.3; transform: scaleX(0.8); }
+    50% { opacity: 1; transform: scaleX(1); }
+}
+
+/* ========================================
+   CARD DE LOGIN (Lado Direito)
+   ======================================== */
+
+.login-card {
+    width: 100%;
+    max-width: 450px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 50px 40px;
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(0, 255, 136, 0.1);
+    border: 1px solid rgba(0, 255, 136, 0.1);
+    animation: cardSlideIn 0.6s ease-out;
+}
+
+@keyframes cardSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.card-header {
+    margin-bottom: 40px;
+}
+
+.login-title {
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--text-primary);
+    text-align: center;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+}
+
+.title-underline {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--neon-green), var(--neon-purple));
+    margin: 0 auto;
+    border-radius: 2px;
+    box-shadow: 0 0 10px var(--neon-green);
+}
+
+/* ========================================
+   FORMULÁRIO MODERNO
+   ======================================== */
+
+.modern-form .form-group {
+    margin-bottom: 25px;
+}
+
+.modern-form label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.modern-form input[type="email"],
+.modern-form input[type="password"],
+.modern-form input[type="text"] {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid var(--input-border);
+    border-radius: 12px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    outline: none;
+    background: var(--input-bg);
+    color: var(--text-primary);
+}
+
+.modern-form input[type="email"]:focus,
+.modern-form input[type="password"]:focus,
+.modern-form input[type="text"]:focus {
+    border-color: var(--input-focus);
+    box-shadow:
+        0 0 0 3px rgba(0, 255, 136, 0.1),
+        0 0 15px rgba(0, 255, 136, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Form Options */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 13px;
+}
+
+/* Custom Checkbox */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    color: var(--text-secondary);
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-color: var(--input-bg);
+    border: 2px solid var(--input-border);
+    border-radius: 4px;
+    margin-right: 8px;
+    transition: all 0.3s ease;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    border-color: var(--input-focus);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: var(--input-focus);
+    border-color: var(--input-focus);
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Links */
+.link-small,
+.link-primary {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.link-small:hover,
+.link-primary:hover {
+    text-decoration: underline;
+    text-shadow: 0 0 8px var(--link-color);
+}
+
+.link-small {
+    font-size: 13px;
+}
+
+/* ========================================
+   BOTÃO COM EFEITO GLOW
+   ======================================== */
+
+.glow-button {
+    position: relative;
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--neon-green), var(--neon-purple));
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow:
+        0 5px 15px rgba(0, 255, 136, 0.3),
+        0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+.glow-button .btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+.glow-button .btn-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.glow-button:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 8px 25px rgba(0, 255, 136, 0.5),
+        0 0 30px rgba(0, 255, 136, 0.3);
+}
+
+.glow-button:hover .btn-glow {
+    opacity: 1;
+    animation: glowPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.6; }
+}
+
+.glow-button:active {
+    transform: translateY(-1px);
+}
+
+.glow-button:disabled {
+    background: #555;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Error Message */
+.error-message {
+    background-color: rgba(255, 51, 51, 0.15);
+    color: #ff6b6b;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    display: none;
+    border-left: 4px solid #ff6b6b;
+}
+
+.error-message.show {
+    display: block;
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* Success Message */
+.success-message {
+    background-color: rgba(0, 255, 136, 0.15);
+    color: var(--neon-green);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    display: none;
+    border-left: 4px solid var(--neon-green);
+}
+
+.success-message.show {
+    display: block;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Form Footer */
+.form-footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+/* ========================================
+   THEME TOGGLE BUTTON (Com Boxicons)
+   ======================================== */
+
+.theme-toggle {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    border: 2px solid var(--input-border);
+    background: var(--card-bg);
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.2),
+        0 0 15px rgba(0, 255, 136, 0.05);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.theme-toggle .theme-icon {
+    font-size: 24px;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.3),
+        0 0 25px rgba(0, 255, 136, 0.15);
+    border-color: var(--link-color);
+}
+
+.theme-toggle:hover .theme-icon {
+    color: var(--link-color);
+    transform: rotate(15deg);
+}
+
+.theme-toggle:active {
+    transform: translateY(0);
+}
+
+/* ========================================
+   ESTILOS PARA OUTRAS PÁGINAS
+   ======================================== */
+
+/* Container padrão para páginas não-split */
+body:not(.split-screen-body) {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     min-height: 100vh;
@@ -51,35 +636,6 @@ body {
     padding: 20px;
 }
 
-/* Theme Toggle Button */
-.theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: none;
-    background: var(--box-bg);
-    box-shadow: 0 4px 15px var(--shadow);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
-
-.theme-toggle:hover {
-    transform: scale(1.1) rotate(15deg);
-}
-
-.theme-toggle:active {
-    transform: scale(0.95);
-}
-
-/* Login Box */
 .login-box,
 .welcome-box {
     background: var(--box-bg);
@@ -90,15 +646,11 @@ body {
     transition: background 0.3s ease;
 }
 
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+    font-size: 14px;
 }
 
 h1 {
@@ -106,13 +658,6 @@ h1 {
     font-size: 32px;
     margin-bottom: 10px;
     text-align: center;
-}
-
-.subtitle {
-    text-align: center;
-    color: var(--text-secondary);
-    margin-bottom: 30px;
-    font-size: 14px;
 }
 
 /* Back Button */
@@ -131,7 +676,7 @@ h1 {
     color: var(--link-color);
 }
 
-/* Form Styles */
+/* Form Styles (páginas antigas) */
 .form-group {
     margin-bottom: 20px;
 }
@@ -172,129 +717,7 @@ input[type="text"]:focus {
     color: var(--text-secondary);
 }
 
-/* Form Options (Remember Me + Forgot Password) */
-.form-options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    font-size: 14px;
-}
-
-/* Custom Checkbox */
-.checkbox-container {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    user-select: none;
-    color: var(--text-primary);
-}
-
-.checkbox-container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-}
-
-.checkmark {
-    position: relative;
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    background-color: var(--input-bg);
-    border: 2px solid var(--input-border);
-    border-radius: 4px;
-    margin-right: 8px;
-    transition: all 0.3s ease;
-}
-
-.checkbox-container:hover input ~ .checkmark {
-    border-color: var(--input-focus);
-}
-
-.checkbox-container input:checked ~ .checkmark {
-    background-color: var(--input-focus);
-    border-color: var(--input-focus);
-}
-
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-.checkbox-container input:checked ~ .checkmark:after {
-    display: block;
-}
-
-.checkbox-container .checkmark:after {
-    left: 5px;
-    top: 1px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-}
-
-/* Links */
-.link-small,
-.link-primary {
-    color: var(--link-color);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.link-small:hover,
-.link-primary:hover {
-    text-decoration: underline;
-}
-
-.link-small {
-    font-size: 14px;
-}
-
-/* Error Message */
-.error-message {
-    background-color: #fee;
-    color: #c33;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    font-size: 14px;
-    display: none;
-    border-left: 4px solid #c33;
-}
-
-.error-message.show {
-    display: block;
-    animation: shake 0.4s ease;
-}
-
-/* Success Message */
-.success-message {
-    background-color: #efe;
-    color: #2a7;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    font-size: 14px;
-    display: none;
-    border-left: 4px solid #2a7;
-}
-
-.success-message.show {
-    display: block;
-    animation: slideIn 0.3s ease;
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
-}
-
-/* Buttons */
+/* Buttons (páginas antigas) */
 .btn-login,
 .btn-logout {
     width: 100%;
@@ -325,14 +748,6 @@ input[type="text"]:focus {
     background: #ccc;
     cursor: not-allowed;
     transform: none;
-}
-
-/* Form Footer */
-.form-footer {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 14px;
-    color: var(--text-secondary);
 }
 
 /* Info Box */
@@ -366,7 +781,61 @@ input[type="text"]:focus {
     75% { transform: rotate(-20deg); }
 }
 
-/* Responsive */
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .split-left {
+        flex: 0 0 50%;
+    }
+
+    .split-right {
+        flex: 0 0 50%;
+    }
+
+    .neon-title {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 768px) {
+    .split-container {
+        flex-direction: column;
+    }
+
+    .split-left {
+        flex: 0 0 100%;
+        min-height: 40vh;
+    }
+
+    .split-right {
+        flex: 0 0 100%;
+        padding: 30px 20px;
+    }
+
+    .neon-title {
+        font-size: 36px;
+        letter-spacing: 4px;
+    }
+
+    .neon-subtitle {
+        font-size: 14px;
+    }
+
+    .login-card {
+        padding: 40px 30px;
+    }
+
+    .theme-toggle {
+        top: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+}
+
 @media (max-width: 480px) {
     .container {
         padding: 10px;
@@ -381,17 +850,23 @@ input[type="text"]:focus {
         font-size: 26px;
     }
 
-    .theme-toggle {
-        top: 10px;
-        right: 10px;
-        width: 45px;
-        height: 45px;
-        font-size: 20px;
-    }
-
     .form-options {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
+    }
+
+    .login-card {
+        padding: 30px 20px;
+    }
+
+    .login-title {
+        font-size: 28px;
+    }
+
+    .neon-circle,
+    .neon-circle-2 {
+        width: 200px;
+        height: 200px;
     }
 }
